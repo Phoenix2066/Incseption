@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>InCSEption | Dive into Layers of Innovation</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-navy': '#020617',
+                        'neon-blue': '#0ea5e9',
+                        'cyan-glow': '#38bdf8',
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Custom Extracted Styles -->
+    <style>
+        body {
+            background-color: #020617;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* 3D Animated Grid Environment */
+        .grid-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            perspective: 600px;
+            z-index: -2;
+            overflow: hidden;
+            background-color: #020617;
+        }
+
+        .grid-plane {
+            position: absolute;
+            width: 200vw;
+            height: 150vh;
+            left: -50vw;
+            background-image: 
+                linear-gradient(to right, rgba(14, 165, 233, 0.25) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(14, 165, 233, 0.25) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 2s linear infinite;
+        }
+
+        .grid-bottom {
+            top: 50vh;
+            transform-origin: top center;
+            transform: rotateX(75deg);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 40%);
+            mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 40%);
+        }
+
+        .grid-top {
+            bottom: 50vh;
+            transform-origin: bottom center;
+            transform: rotateX(-75deg);
+            -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0,0,0,1) 40%);
+            mask-image: linear-gradient(to top, transparent 0%, rgba(0,0,0,1) 40%);
+        }
+
+        .scanline {
+            position: absolute;
+            top: 0; left: 0; width: 100vw; height: 15vh;
+            background: linear-gradient(to bottom, transparent, rgba(56, 189, 248, 0.15), transparent);
+            animation: scan 6s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% { background-position-y: 0px; }
+            100% { background-position-y: 50px; }
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-20vh); }
+            100% { transform: translateY(120vh); }
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .neon-border {
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.6);
+        }
+
+        .neon-text-glow {
+            text-shadow: 0 0 15px rgba(14, 165, 233, 0.9), 0 0 30px rgba(14, 165, 233, 0.6), 0 0 45px rgba(14, 165, 233, 0.4);
+        }
+
+        .neon-btn-glow {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .neon-btn-glow:hover {
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.8), 0 0 15px rgba(56, 189, 248, 0.4);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- 3D Animated Grid Environment -->
+    <div class="grid-wrapper">
+        <div class="grid-plane grid-top"></div>
+        <div class="grid-plane grid-bottom"></div>
+        <div class="scanline"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-cyan-glow/20 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="font-orbitron font-bold text-xl md:text-2xl tracking-wider text-neon-blue neon-text-glow">
+                In<span class="text-white">CSE</span>ption
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-orbitron">
+                <a class="hover:text-cyan-glow transition-colors" href="#about">About</a>
+                <a class="hover:text-cyan-glow transition-colors" href="#prizes">Prizes</a>
+                <a class="hover:text-cyan-glow transition-colors" href="#tracks">Tracks</a>
+                <a class="hover:text-cyan-glow transition-colors" href="#timeline">Timeline</a>
+            </div>
+            <a class="border border-neon-blue/60 text-neon-blue px-6 py-2 rounded-sm font-orbitron text-sm hover:bg-neon-blue hover:text-white transition-all neon-btn-glow" href="#register">JOIN</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center pt-20 px-4 text-center overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.2)_0%,transparent_60%)] pointer-events-none"></div>
+        <div class="z-10 animate-fade-in flex flex-col items-center">
+            <h1 class="font-orbitron text-6xl md:text-8xl font-black mb-6 tracking-tighter">
+                In<span class="text-neon-blue neon-text-glow">CSE</span>ption
+            </h1>
+            <p class="font-orbitron text-cyan-glow text-lg md:text-2xl mb-12 tracking-[0.2em] uppercase neon-text-glow">
+                Dive into Layers of Innovation
+            </p>
+            <a class="inline-block bg-neon-blue text-white font-orbitron font-bold py-4 px-10 rounded-sm neon-btn-glow transition-all transform uppercase tracking-widest text-lg" href="#register">
+                Register Now
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-24 px-6 max-w-4xl mx-auto text-center relative z-10" id="about">
+        <h2 class="font-orbitron text-3xl md:text-4xl mb-12 text-cyan-glow uppercase tracking-widest neon-text-glow">The Glitch in the System</h2>
+        <div class="glass p-8 md:p-12 rounded-xl neon-border inline-block">
+            <p class="text-lg md:text-xl leading-relaxed text-gray-300 font-inter">
+                InCSEption is a high-octane 8-hour hackathon designed to push the boundaries of technical prowess and creative problem-solving. It's not just a competition; it's a multi-layered journey into the core of Computer Science and Engineering. Whether you're a builder, a breaker, or a visionary, your layer of reality starts here.
+            </p>
+        </div>
+    </section>
+
+    <!-- Prize Pool Section -->
+    <section class="py-24 px-6 max-w-6xl mx-auto text-center relative z-10" id="prizes">
+        <h2 class="font-orbitron text-3xl md:text-4xl mb-16 text-cyan-glow uppercase tracking-widest neon-text-glow">Prize Pool</h2>
+        
+        <div class="flex flex-col md:flex-row justify-center items-end gap-8">
+            
+            <!-- Runner Up -->
+            <div class="glass p-8 rounded-xl flex-1 hover:-translate-y-2 transition-transform duration-300">
+                <div class="text-5xl mb-4 text-center flex justify-center w-full">🥈</div>
+                <h3 class="font-orbitron text-xl text-gray-300 mb-4">Runner Up</h3>
+                <div class="text-4xl font-bold text-white mb-4">₹ 15,000</div>
+                <p class="text-gray-400 text-sm">Tech gadgets and certifications included.</p>
+            </div>
+
+            <!-- Grand Champion -->
+            <div class="glass p-12 rounded-xl neon-border flex-[1.2] transform md:scale-105 z-10 bg-deep-navy/80 hover:-translate-y-2 transition-transform duration-300">
+                <div class="absolute inset-0 bg-neon-blue/10 rounded-xl blur-md -z-10"></div>
+                <div class="text-7xl mb-6 text-center flex justify-center w-full drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">🏆</div>
+                <h3 class="font-orbitron text-2xl text-cyan-glow neon-text-glow mb-4">Grand Champion</h3>
+                <div class="text-5xl font-bold text-white mb-6">₹ 30,000</div>
+                <p class="text-gray-300 text-sm">Cloud credits, internship opportunities, and the InCSEption Trophy.</p>
+            </div>
+
+            <!-- Second Runner Up -->
+            <div class="glass p-8 rounded-xl flex-1 hover:-translate-y-2 transition-transform duration-300">
+                <div class="text-5xl mb-4 text-center flex justify-center w-full">🥉</div>
+                <h3 class="font-orbitron text-xl text-gray-300 mb-4">Second Runner Up</h3>
+                <div class="text-4xl font-bold text-white mb-4">₹ 10,000</div>
+                <p class="text-gray-400 text-sm">Exciting swags and learning vouchers.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Innovation Tracks -->
+    <section class="py-24 px-6 max-w-6xl mx-auto relative z-10" id="tracks">
+        <h2 class="font-orbitron text-3xl md:text-4xl mb-16 text-cyan-glow uppercase tracking-widest neon-text-glow text-center">Innovation Tracks</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="glass p-8 md:p-10 rounded-xl hover:neon-border transition-all duration-300 group">
+                <div class="mb-6 flex">
+                    <svg class="w-10 h-10 text-cyan-glow group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                </div>
+                <h3 class="font-orbitron text-xl md:text-2xl text-white mb-4">AI / Machine Learning</h3>
+                <p class="text-gray-400 text-sm md:text-base">Build intelligent systems that redefine human-machine interaction.</p>
+            </div>
+
+            <div class="glass p-8 md:p-10 rounded-xl hover:neon-border transition-all duration-300 group">
+                <div class="mb-6 flex">
+                    <svg class="w-10 h-10 text-cyan-glow group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                </div>
+                <h3 class="font-orbitron text-xl md:text-2xl text-white mb-4">Web 3.0 & Apps</h3>
+                <p class="text-gray-400 text-sm md:text-base">Scale the future web with decentralized or hyper-efficient platforms.</p>
+            </div>
+
+            <div class="glass p-8 md:p-10 rounded-xl hover:neon-border transition-all duration-300 group">
+                <div class="mb-6 flex">
+                    <svg class="w-10 h-10 text-cyan-glow group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </div>
+                <h3 class="font-orbitron text-xl md:text-2xl text-white mb-4">Cybersecurity</h3>
+                <p class="text-gray-400 text-sm md:text-base">Secure the digital frontier against the evolving threat landscape.</p>
+            </div>
+
+            <div class="glass p-8 md:p-10 rounded-xl hover:neon-border transition-all duration-300 group">
+                <div class="mb-6 flex">
+                    <svg class="w-10 h-10 text-cyan-glow group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                </div>
+                <h3 class="font-orbitron text-xl md:text-2xl text-white mb-4">Open Innovation</h3>
+                <p class="text-gray-400 text-sm md:text-base">Your vision, your tech. Solve real-world problems without boundaries.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-24 px-6 max-w-5xl mx-auto relative z-10" id="timeline">
+        <h2 class="font-orbitron text-3xl md:text-4xl mb-16 text-cyan-glow uppercase tracking-widest neon-text-glow text-center">Timeline</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-center relative gap-8 md:gap-0">
+            
+            <div class="hidden md:block absolute top-[40%] left-0 w-full h-[2px] bg-gradient-to-r from-cyan-glow/10 via-cyan-glow/50 to-cyan-glow/10 -z-10"></div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-5 h-5 rounded-full bg-cyan-glow shadow-[0_0_15px_#38bdf8] mb-6 border-2 border-deep-navy"></div>
+                <div class="glass p-6 md:p-8 rounded-xl text-center min-w-[280px]">
+                    <h3 class="font-orbitron text-lg text-cyan-glow mb-2">Phase 01</h3>
+                    <h4 class="text-xl font-bold text-white mb-2">PPT Submission</h4>
+                    <p class="text-sm text-gray-400">Deadline: Oct 24, 2023</p>
+                </div>
+            </div>
+
+            <div class="md:hidden w-[2px] h-16 bg-gradient-to-b from-cyan-glow/50 to-cyan-glow/10 my-2"></div>
+
+            <div class="flex flex-col items-center">
+                <div class="w-5 h-5 rounded-full bg-cyan-glow shadow-[0_0_15px_#38bdf8] mb-6 border-2 border-deep-navy"></div>
+                <div class="glass p-6 md:p-8 rounded-xl text-center min-w-[280px]">
+                    <h3 class="font-orbitron text-lg text-cyan-glow mb-2">Phase 02</h3>
+                    <h4 class="text-xl font-bold text-white mb-2">8-Hour Hackathon</h4>
+                    <p class="text-sm text-gray-400">Date: Nov 02, 2023</p>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="text-center mt-20">
+            <h2 class="font-orbitron text-2xl text-cyan-glow uppercase tracking-widest neon-text-glow mb-8">The Blueprint</h2>
+            <a href="#" class="inline-block border border-neon-blue/60 text-neon-blue font-orbitron font-bold py-3 px-8 rounded-sm neon-btn-glow transition-all uppercase tracking-widest hover:bg-neon-blue hover:text-white">
+                Download PDF
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 border-t border-cyan-glow/20 bg-deep-navy/80 relative z-10 glass rounded-none border-b-0 border-l-0 border-r-0">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-orbitron text-2xl text-cyan-glow tracking-widest mb-8 neon-text-glow uppercase">The Architects</h2>
+            <div class="flex justify-center flex-wrap gap-8 mb-10">
+                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"></path></svg></a>
+                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/><path d="M20.5 4.5l-2-1H5.5l-2 1C2 6 2 13 2 13l2 5h16l2-5s0-7-1.5-8.5zm-5 11.5H8.5l-1-1v-2h9v2l-1 1z"/></svg></a>
+            </div>
+            <p class="font-inter text-sm text-gray-500 tracking-wide">&copy; 2023 InCSEption Hackathon. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
