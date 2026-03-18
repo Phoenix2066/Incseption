@@ -162,6 +162,31 @@
         </div>
     </section>
 
+    <!-- Countdown Section -->
+    <section class="py-16 px-6 max-w-4xl mx-auto text-center relative z-10" id="countdown">
+        <div class="glass p-8 md:p-12 rounded-xl neon-border inline-block w-full">
+            <h2 class="font-orbitron text-2xl md:text-3xl mb-8 text-cyan-glow uppercase tracking-widest neon-text-glow">Time Left to Make It Happen</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div class="glass rounded-lg p-4">
+                    <div class="font-orbitron text-3xl md:text-4xl text-white" id="days">00</div>
+                    <div class="font-inter text-xs md:text-sm uppercase tracking-widest text-gray-400 mt-2">Days</div>
+                </div>
+                <div class="glass rounded-lg p-4">
+                    <div class="font-orbitron text-3xl md:text-4xl text-white" id="hours">00</div>
+                    <div class="font-inter text-xs md:text-sm uppercase tracking-widest text-gray-400 mt-2">Hours</div>
+                </div>
+                <div class="glass rounded-lg p-4">
+                    <div class="font-orbitron text-3xl md:text-4xl text-white" id="minutes">00</div>
+                    <div class="font-inter text-xs md:text-sm uppercase tracking-widest text-gray-400 mt-2">Minutes</div>
+                </div>
+                <div class="glass rounded-lg p-4">
+                    <div class="font-orbitron text-3xl md:text-4xl text-white" id="seconds">00</div>
+                    <div class="font-inter text-xs md:text-sm uppercase tracking-widest text-gray-400 mt-2">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="py-24 px-6 max-w-4xl mx-auto text-center relative z-10" id="about">
         <h2 class="font-orbitron text-3xl md:text-4xl mb-12 text-cyan-glow uppercase tracking-widest neon-text-glow">The Glitch in the System</h2>
@@ -260,7 +285,7 @@
                 <div class="glass p-6 md:p-8 rounded-xl text-center min-w-[280px]">
                     <h3 class="font-orbitron text-lg text-cyan-glow mb-2">Phase 01</h3>
                     <h4 class="text-xl font-bold text-white mb-2">PPT Submission</h4>
-                    <p class="text-sm text-gray-400">Deadline: Oct 24, 2023</p>
+                    <p class="text-sm text-gray-400">Deadline: March 28, 2026</p>
                 </div>
             </div>
 
@@ -299,6 +324,45 @@
             <p class="font-inter text-sm text-gray-500 tracking-wide">&copy; 2023 InCSEption Hackathon. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            const dayEl = document.getElementById('days');
+            const hourEl = document.getElementById('hours');
+            const minuteEl = document.getElementById('minutes');
+            const secondEl = document.getElementById('seconds');
+
+            function getNextAprilSix() {
+                const now = new Date();
+                const currentYear = now.getFullYear();
+                let target = new Date(currentYear, 3, 6, 0, 0, 0, 0);
+                if (now > target) {
+                    target = new Date(currentYear + 1, 3, 6, 0, 0, 0, 0);
+                }
+                return target;
+            }
+
+            function updateCountdown() {
+                const now = new Date();
+                const target = getNextAprilSix();
+                const diff = target.getTime() - now.getTime();
+
+                const totalSeconds = Math.max(0, Math.floor(diff / 1000));
+                const days = Math.floor(totalSeconds / 86400);
+                const hours = Math.floor((totalSeconds % 86400) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                dayEl.textContent = String(days).padStart(2, '0');
+                hourEl.textContent = String(hours).padStart(2, '0');
+                minuteEl.textContent = String(minutes).padStart(2, '0');
+                secondEl.textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+    </script>
 
 </body>
 </html>
