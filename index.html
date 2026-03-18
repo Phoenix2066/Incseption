@@ -119,6 +119,70 @@
             box-shadow: 0 0 40px rgba(14, 165, 233, 0.8), 0 0 15px rgba(56, 189, 248, 0.4);
             transform: scale(1.05);
         }
+
+        .tracks-soon-card {
+            position: relative;
+            overflow: hidden;
+            animation: tracksFloat 3.2s ease-in-out infinite;
+        }
+
+        .tracks-soon-card::before {
+            content: "";
+            position: absolute;
+            inset: -120% 40% -120% -40%;
+            background: linear-gradient(120deg, transparent 30%, rgba(56, 189, 248, 0.22) 50%, transparent 70%);
+            animation: tracksSweep 2.8s linear infinite;
+            pointer-events: none;
+        }
+
+        .tracks-soon-text {
+            animation: tracksPulse 1.8s ease-in-out infinite;
+        }
+
+        .tracks-loader {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .tracks-loader-dot {
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 9999px;
+            background: rgba(56, 189, 248, 0.9);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+            animation: tracksBounce 0.9s ease-in-out infinite;
+        }
+
+        .tracks-loader-dot:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .tracks-loader-dot:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes tracksFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes tracksSweep {
+            0% { transform: translateX(-35%); }
+            100% { transform: translateX(85%); }
+        }
+
+        @keyframes tracksPulse {
+            0%, 100% { opacity: 0.82; text-shadow: 0 0 8px rgba(56, 189, 248, 0.45); }
+            50% { opacity: 1; text-shadow: 0 0 18px rgba(56, 189, 248, 0.9); }
+        }
+
+        @keyframes tracksBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.8; }
+            50% { transform: translateY(-8px); opacity: 1; }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -134,7 +198,7 @@
     <nav class="fixed top-0 w-full z-50 glass border-b border-cyan-glow/20 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="font-orbitron font-bold text-xl md:text-2xl tracking-wider text-neon-blue neon-text-glow">
-                In<span class="text-white">CSE</span>ption
+                &lt;In<span class="text-white">CSE</span>ption 2.0&gt;
             </div>
             <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-orbitron">
                 <a class="hover:text-cyan-glow transition-colors" href="#about">About</a>
@@ -151,7 +215,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.2)_0%,transparent_60%)] pointer-events-none"></div>
         <div class="z-10 animate-fade-in flex flex-col items-center">
             <h1 class="font-orbitron text-6xl md:text-8xl font-black mb-6 tracking-tighter">
-                In<span class="text-neon-blue neon-text-glow">CSE</span>ption
+                &lt;In<span class="text-neon-blue neon-text-glow">CSE</span>ption 2.0&gt;
             </h1>
             <p class="font-orbitron text-cyan-glow text-lg md:text-2xl mb-12 tracking-[0.2em] uppercase neon-text-glow">
                 Dive into Layers of Innovation
@@ -198,77 +262,131 @@
     </section>
 
     <!-- Prize Pool Section -->
-    <section class="py-24 px-6 max-w-6xl mx-auto text-center relative z-10" id="prizes">
-        <h2 class="font-orbitron text-3xl md:text-4xl mb-16 text-cyan-glow uppercase tracking-widest neon-text-glow">Prize Pool</h2>
+    <section class="py-16 md:py-24 px-4 md:px-6 max-w-6xl mx-auto text-center relative z-10" id="prizes">
+        <h2 class="font-orbitron text-2xl sm:text-3xl md:text-4xl mb-10 md:mb-16 text-cyan-glow uppercase tracking-widest neon-text-glow">Prize Pool</h2>
         
-        <div class="flex flex-col md:flex-row justify-center items-end gap-8">
-            
-            <!-- Runner Up -->
-            <div class="glass p-8 rounded-xl flex-1 hover:-translate-y-2 transition-transform duration-300">
-                <div class="text-5xl mb-4 text-center flex justify-center w-full">🥈</div>
-                <h3 class="font-orbitron text-xl text-gray-300 mb-4">Runner Up</h3>
-                <div class="text-4xl font-bold text-white mb-4">₹ 15,000</div>
-                <p class="text-gray-400 text-sm">Tech gadgets and certifications included.</p>
-            </div>
-
-            <!-- Grand Champion -->
-            <div class="glass p-12 rounded-xl neon-border flex-[1.2] transform md:scale-105 z-10 bg-deep-navy/80 hover:-translate-y-2 transition-transform duration-300">
-                <div class="absolute inset-0 bg-neon-blue/10 rounded-xl blur-md -z-10"></div>
-                <div class="text-7xl mb-6 text-center flex justify-center w-full drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">🏆</div>
-                <h3 class="font-orbitron text-2xl text-cyan-glow neon-text-glow mb-4">Grand Champion</h3>
-                <div class="text-5xl font-bold text-white mb-6">₹ 30,000</div>
-                <p class="text-gray-300 text-sm">Cloud credits, internship opportunities, and the InCSEption Trophy.</p>
-            </div>
-
-            <!-- Second Runner Up -->
-            <div class="glass p-8 rounded-xl flex-1 hover:-translate-y-2 transition-transform duration-300">
-                <div class="text-5xl mb-4 text-center flex justify-center w-full">🥉</div>
-                <h3 class="font-orbitron text-xl text-gray-300 mb-4">Second Runner Up</h3>
-                <div class="text-4xl font-bold text-white mb-4">₹ 10,000</div>
-                <p class="text-gray-400 text-sm">Exciting swags and learning vouchers.</p>
-            </div>
-
+        <!-- Total Prize Pool Block -->
+        <div id="prizePoolToggle" class="relative glass p-7 sm:p-10 md:p-12 rounded-xl neon-border mx-auto max-w-2xl cursor-pointer hover:-translate-y-2 transition-all duration-300 mb-10 md:mb-12">
+            <div class="absolute top-4 right-4 w-7 h-7 rounded-full border border-cyan-glow/40 text-cyan-glow/70 flex items-center justify-center text-base leading-none bg-deep-navy/40">+</div>
+            <div class="text-5xl md:text-6xl mb-5 md:mb-6 text-center flex justify-center w-full drop-shadow-[0_0_15px_rgba(56,189,248,0.5)]">💰</div>
+            <h3 class="font-orbitron text-xl sm:text-2xl text-cyan-glow neon-text-glow mb-3 md:mb-4">Total Prize Pool</h3>
+            <div class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-3 md:mb-4">₹ 1,00,000</div>
+            <p class="text-gray-400 text-xs sm:text-sm">Click to view year-wise split for 1st, 2nd, and 3rd place</p>
         </div>
     </section>
+
+    <!-- Prize Breakdown Modal -->
+    <div id="prizeModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass rounded-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto neon-border">
+            <div class="p-5 sm:p-6 md:p-8">
+                <div class="flex justify-between items-center mb-6 md:mb-8">
+                    <h2 class="font-orbitron text-xl sm:text-2xl md:text-3xl text-cyan-glow neon-text-glow uppercase tracking-widest">Prize Breakdown</h2>
+                    <button id="closeModal" class="text-gray-400 hover:text-cyan-glow text-2xl leading-none">&times;</button>
+                </div>
+
+                <div class="space-y-10 md:space-y-12 text-center">
+                    <div>
+                        <h3 class="font-orbitron text-xl md:text-2xl text-cyan-glow mb-6 md:mb-8 pb-3 md:pb-4 border-b border-cyan-glow/30 text-center md:text-left">1st Year</h3>
+                        <div class="flex flex-col md:flex-row justify-center items-stretch md:items-end gap-4 md:gap-6">
+                            <div class="glass p-6 md:p-7 rounded-xl w-full md:w-auto md:flex-1 hover:-translate-y-2 transition-transform duration-300">
+                                <div class="text-5xl mb-4 text-center">🥈</div>
+                                <h4 class="font-orbitron text-lg text-gray-300 mb-2">2nd Place</h4>
+                                <div class="text-3xl font-bold text-white">₹ 7,500</div>
+                            </div>
+                            <div class="glass p-8 md:p-10 rounded-xl neon-border w-full md:w-auto md:flex-[1.2] transform md:scale-105 bg-deep-navy/80 hover:-translate-y-2 transition-transform duration-300 order-first md:order-none">
+                                <div class="text-5xl md:text-6xl mb-4 md:mb-5 text-center drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">🥇</div>
+                                <h4 class="font-orbitron text-lg md:text-xl text-cyan-glow neon-text-glow mb-2 md:mb-3">1st Place</h4>
+                                <div class="text-3xl md:text-4xl font-bold text-white">₹ 10,000</div>
+                            </div>
+                            <div class="glass p-6 md:p-7 rounded-xl w-full md:w-auto md:flex-1 hover:-translate-y-2 transition-transform duration-300">
+                                <div class="text-5xl mb-4 text-center">🥉</div>
+                                <h4 class="font-orbitron text-lg text-gray-300 mb-2">3rd Place</h4>
+                                <div class="text-3xl font-bold text-white">₹ 5,000</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-orbitron text-xl md:text-2xl text-cyan-glow mb-6 md:mb-8 pb-3 md:pb-4 border-b border-cyan-glow/30 text-center md:text-left">2nd Year</h3>
+                        <div class="flex flex-col md:flex-row justify-center items-stretch md:items-end gap-4 md:gap-6">
+                            <div class="glass p-6 md:p-7 rounded-xl w-full md:w-auto md:flex-1 hover:-translate-y-2 transition-transform duration-300">
+                                <div class="text-5xl mb-4 text-center">🥈</div>
+                                <h4 class="font-orbitron text-lg text-gray-300 mb-2">2nd Place</h4>
+                                <div class="text-3xl font-bold text-white">₹ 7,500</div>
+                            </div>
+                            <div class="glass p-8 md:p-10 rounded-xl neon-border w-full md:w-auto md:flex-[1.2] transform md:scale-105 bg-deep-navy/80 hover:-translate-y-2 transition-transform duration-300 order-first md:order-none">
+                                <div class="text-5xl md:text-6xl mb-4 md:mb-5 text-center drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">🥇</div>
+                                <h4 class="font-orbitron text-lg md:text-xl text-cyan-glow neon-text-glow mb-2 md:mb-3">1st Place</h4>
+                                <div class="text-3xl md:text-4xl font-bold text-white">₹ 10,000</div>
+                            </div>
+                            <div class="glass p-6 md:p-7 rounded-xl w-full md:w-auto md:flex-1 hover:-translate-y-2 transition-transform duration-300">
+                                <div class="text-5xl mb-4 text-center">🥉</div>
+                                <h4 class="font-orbitron text-lg text-gray-300 mb-2">3rd Place</h4>
+                                <div class="text-3xl font-bold text-white">₹ 5,000</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-orbitron text-xl md:text-2xl text-cyan-glow mb-6 md:mb-8 pb-3 md:pb-4 border-b border-cyan-glow/30 text-center md:text-left">3rd Year</h3>
+                        <div class="flex flex-col md:flex-row justify-center items-stretch md:items-end gap-4 md:gap-6">
+                            <div class="glass p-6 md:p-7 rounded-xl w-full md:w-auto md:flex-1 hover:-translate-y-2 transition-transform duration-300">
+                                <div class="text-5xl mb-4 text-center">🥈</div>
+                                <h4 class="font-orbitron text-lg text-gray-300 mb-2">2nd Place</h4>
+                                <div class="text-3xl font-bold text-white">₹ 7,500</div>
+                            </div>
+                            <div class="glass p-8 md:p-10 rounded-xl neon-border w-full md:w-auto md:flex-[1.2] transform md:scale-105 bg-deep-navy/80 hover:-translate-y-2 transition-transform duration-300 order-first md:order-none">
+                                <div class="text-5xl md:text-6xl mb-4 md:mb-5 text-center drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">🥇</div>
+                                <h4 class="font-orbitron text-lg md:text-xl text-cyan-glow neon-text-glow mb-2 md:mb-3">1st Place</h4>
+                                <div class="text-3xl md:text-4xl font-bold text-white">₹ 10,000</div>
+                            </div>
+                            <div class="glass p-6 md:p-7 rounded-xl w-full md:w-auto md:flex-1 hover:-translate-y-2 transition-transform duration-300">
+                                <div class="text-5xl mb-4 text-center">🥉</div>
+                                <h4 class="font-orbitron text-lg text-gray-300 mb-2">3rd Place</h4>
+                                <div class="text-3xl font-bold text-white">₹ 5,000</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-orbitron text-xl md:text-2xl text-cyan-glow mb-6 md:mb-8 pb-3 md:pb-4 border-b border-cyan-glow/30 text-center md:text-left">4th Year, MCA & MTech</h3>
+                        <div class="flex flex-col md:flex-row justify-center items-stretch md:items-end gap-4 md:gap-6">
+                            <div class="glass p-6 md:p-7 rounded-xl w-full md:w-auto md:flex-1 hover:-translate-y-2 transition-transform duration-300">
+                                <div class="text-5xl mb-4 text-center">🥈</div>
+                                <h4 class="font-orbitron text-lg text-gray-300 mb-2">2nd Place</h4>
+                                <div class="text-3xl font-bold text-white">₹ 7,500</div>
+                            </div>
+                            <div class="glass p-8 md:p-10 rounded-xl neon-border w-full md:w-auto md:flex-[1.2] transform md:scale-105 bg-deep-navy/80 hover:-translate-y-2 transition-transform duration-300 order-first md:order-none">
+                                <div class="text-5xl md:text-6xl mb-4 md:mb-5 text-center drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">🥇</div>
+                                <h4 class="font-orbitron text-lg md:text-xl text-cyan-glow neon-text-glow mb-2 md:mb-3">1st Place</h4>
+                                <div class="text-3xl md:text-4xl font-bold text-white">₹ 10,000</div>
+                            </div>
+                            <div class="glass p-6 md:p-7 rounded-xl w-full md:w-auto md:flex-1 hover:-translate-y-2 transition-transform duration-300">
+                                <div class="text-5xl mb-4 text-center">🥉</div>
+                                <h4 class="font-orbitron text-lg text-gray-300 mb-2">3rd Place</h4>
+                                <div class="text-3xl font-bold text-white">₹ 5,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Innovation Tracks -->
     <section class="py-24 px-6 max-w-6xl mx-auto relative z-10" id="tracks">
         <h2 class="font-orbitron text-3xl md:text-4xl mb-16 text-cyan-glow uppercase tracking-widest neon-text-glow text-center">Innovation Tracks</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <div class="glass p-8 md:p-10 rounded-xl hover:neon-border transition-all duration-300 group">
-                <div class="mb-6 flex">
-                    <svg class="w-10 h-10 text-cyan-glow group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        <div class="max-w-3xl mx-auto">
+            <div class="tracks-soon-card glass neon-border rounded-xl px-6 py-10 md:px-10 md:py-14 text-center">
+                <div class="text-cyan-glow text-sm md:text-base tracking-[0.35em] uppercase font-orbitron mb-4 opacity-90">Innovation Tracks</div>
+                <h3 class="tracks-soon-text font-orbitron text-2xl sm:text-3xl md:text-4xl text-white uppercase tracking-widest">Will Be Announced Later</h3>
+                <div class="tracks-loader" aria-label="Loading">
+                    <span class="tracks-loader-dot"></span>
+                    <span class="tracks-loader-dot"></span>
+                    <span class="tracks-loader-dot"></span>
                 </div>
-                <h3 class="font-orbitron text-xl md:text-2xl text-white mb-4">AI / Machine Learning</h3>
-                <p class="text-gray-400 text-sm md:text-base">Build intelligent systems that redefine human-machine interaction.</p>
             </div>
-
-            <div class="glass p-8 md:p-10 rounded-xl hover:neon-border transition-all duration-300 group">
-                <div class="mb-6 flex">
-                    <svg class="w-10 h-10 text-cyan-glow group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                </div>
-                <h3 class="font-orbitron text-xl md:text-2xl text-white mb-4">Web 3.0 & Apps</h3>
-                <p class="text-gray-400 text-sm md:text-base">Scale the future web with decentralized or hyper-efficient platforms.</p>
-            </div>
-
-            <div class="glass p-8 md:p-10 rounded-xl hover:neon-border transition-all duration-300 group">
-                <div class="mb-6 flex">
-                    <svg class="w-10 h-10 text-cyan-glow group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                </div>
-                <h3 class="font-orbitron text-xl md:text-2xl text-white mb-4">Cybersecurity</h3>
-                <p class="text-gray-400 text-sm md:text-base">Secure the digital frontier against the evolving threat landscape.</p>
-            </div>
-
-            <div class="glass p-8 md:p-10 rounded-xl hover:neon-border transition-all duration-300 group">
-                <div class="mb-6 flex">
-                    <svg class="w-10 h-10 text-cyan-glow group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                </div>
-                <h3 class="font-orbitron text-xl md:text-2xl text-white mb-4">Open Innovation</h3>
-                <p class="text-gray-400 text-sm md:text-base">Your vision, your tech. Solve real-world problems without boundaries.</p>
-            </div>
-
         </div>
     </section>
 
@@ -285,7 +403,7 @@
                 <div class="glass p-6 md:p-8 rounded-xl text-center min-w-[280px]">
                     <h3 class="font-orbitron text-lg text-cyan-glow mb-2">Phase 01</h3>
                     <h4 class="text-xl font-bold text-white mb-2">PPT Submission</h4>
-                    <p class="text-sm text-gray-400">Deadline: March 28, 2026</p>
+                    <p class="text-sm text-gray-400">Deadline: April 1, 2026</p>
                 </div>
             </div>
 
@@ -296,7 +414,7 @@
                 <div class="glass p-6 md:p-8 rounded-xl text-center min-w-[280px]">
                     <h3 class="font-orbitron text-lg text-cyan-glow mb-2">Phase 02</h3>
                     <h4 class="text-xl font-bold text-white mb-2">8-Hour Hackathon</h4>
-                    <p class="text-sm text-gray-400">Date: Nov 02, 2023</p>
+                    <p class="text-sm text-gray-400">Date: April 6, 2026</p>
                 </div>
             </div>
 
@@ -305,25 +423,87 @@
         <div class="text-center mt-20">
             <h2 class="font-orbitron text-2xl text-cyan-glow uppercase tracking-widest neon-text-glow mb-8">The Blueprint</h2>
             <a href="#" class="inline-block border border-neon-blue/60 text-neon-blue font-orbitron font-bold py-3 px-8 rounded-sm neon-btn-glow transition-all uppercase tracking-widest hover:bg-neon-blue hover:text-white">
-                Download PDF
+                Download Template
             </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-16 px-6 border-t border-cyan-glow/20 bg-deep-navy/80 relative z-10 glass rounded-none border-b-0 border-l-0 border-r-0">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="font-orbitron text-2xl text-cyan-glow tracking-widest mb-8 neon-text-glow uppercase">The Architects</h2>
-            <div class="flex justify-center flex-wrap gap-8 mb-10">
-                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"></path></svg></a>
-                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/><path d="M20.5 4.5l-2-1H5.5l-2 1C2 6 2 13 2 13l2 5h16l2-5s0-7-1.5-8.5zm-5 11.5H8.5l-1-1v-2h9v2l-1 1z"/></svg></a>
+    <footer class="py-16 px-4 md:px-6 border-t border-cyan-glow/20 bg-deep-navy/80 relative z-10 glass rounded-none border-b-0 border-l-0 border-r-0">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-orbitron text-2xl text-cyan-glow tracking-widest mb-8 neon-text-glow uppercase text-center md:text-left">The Architects</h2>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-10 mb-10">
+                <div class="w-full md:w-[60%]">
+                    <h3 class="font-orbitron text-lg text-cyan-glow uppercase tracking-widest mb-4 text-center md:text-left">Participant Helpline</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                        <a href="tel:+919876543210" class="glass rounded-lg border border-cyan-glow/30 p-4 hover:border-cyan-glow transition-colors text-center md:text-left">
+                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Aarav Sharma</div>
+                            <div class="text-gray-300 mt-1">+91 98765 43210</div>
+                        </a>
+                        <a href="tel:+919876543211" class="glass rounded-lg border border-cyan-glow/30 p-4 hover:border-cyan-glow transition-colors text-center md:text-left">
+                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Diya Nair</div>
+                            <div class="text-gray-300 mt-1">+91 98765 43211</div>
+                        </a>
+                        <a href="tel:+919876543212" class="glass rounded-lg border border-cyan-glow/30 p-4 hover:border-cyan-glow transition-colors text-center md:text-left">
+                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Rohan Mehta</div>
+                            <div class="text-gray-300 mt-1">+91 98765 43212</div>
+                        </a>
+                        <a href="tel:+919876543213" class="glass rounded-lg border border-cyan-glow/30 p-4 hover:border-cyan-glow transition-colors text-center md:text-left">
+                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Isha Verma</div>
+                            <div class="text-gray-300 mt-1">+91 98765 43213</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-auto">
+                    <h3 class="font-orbitron text-lg text-cyan-glow uppercase tracking-widest mb-4 text-center md:text-right">Connect</h3>
+                    <div class="flex justify-center md:justify-end flex-wrap gap-5 md:gap-8">
+                        <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"></path></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-glow transition-all hover:scale-110"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/><path d="M20.5 4.5l-2-1H5.5l-2 1C2 6 2 13 2 13l2 5h16l2-5s0-7-1.5-8.5zm-5 11.5H8.5l-1-1v-2h9v2l-1 1z"/></svg></a>
+                    </div>
+                </div>
             </div>
-            <p class="font-inter text-sm text-gray-500 tracking-wide">&copy; 2023 InCSEption Hackathon. All rights reserved.</p>
+            <p class="font-inter text-sm text-gray-500 tracking-wide text-center md:text-left">&copy; 2026 InCSEption 2.0 Hackathon. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            const prizePoolToggle = document.getElementById('prizePoolToggle');
+            const prizeModal = document.getElementById('prizeModal');
+            const closeModal = document.getElementById('closeModal');
+
+            if (!prizePoolToggle || !prizeModal || !closeModal) {
+                return;
+            }
+
+            prizePoolToggle.addEventListener('click', () => {
+                prizeModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            });
+
+            function closePrizeModal() {
+                prizeModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            closeModal.addEventListener('click', closePrizeModal);
+
+            prizeModal.addEventListener('click', (event) => {
+                if (event.target === prizeModal) {
+                    closePrizeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !prizeModal.classList.contains('hidden')) {
+                    closePrizeModal();
+                }
+            });
+        })();
+    </script>
 
     <script>
         (function () {
