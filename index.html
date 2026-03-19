@@ -206,7 +206,7 @@
                 <a class="hover:text-cyan-glow transition-colors" href="#tracks">Tracks</a>
                 <a class="hover:text-cyan-glow transition-colors" href="#timeline">Timeline</a>
             </div>
-            <a class="border border-neon-blue/60 text-neon-blue px-6 py-2 rounded-sm font-orbitron text-sm hover:bg-neon-blue hover:text-white transition-all neon-btn-glow" href="#register">JOIN</a>
+            <a class="border border-neon-blue/60 text-neon-blue px-6 py-2 rounded-sm font-orbitron text-sm hover:bg-neon-blue hover:text-white transition-all neon-btn-glow" href="#register">REGISTER</a>
         </div>
     </nav>
 
@@ -258,6 +258,10 @@
             <p class="text-lg md:text-xl leading-relaxed text-gray-300 font-inter">
                 InCSEption is a high-octane 8-hour hackathon designed to push the boundaries of technical prowess and creative problem-solving. It's not just a competition; it's a multi-layered journey into the core of Computer Science and Engineering. Whether you're a builder, a breaker, or a visionary, your layer of reality starts here.
             </p>
+            <br />
+            <a href="#" class="inline-block border border-neon-blue/60 text-neon-blue font-orbitron font-bold py-3 px-8 rounded-sm neon-btn-glow transition-all uppercase tracking-widest hover:bg-neon-blue hover:text-white">
+                Download Brochure
+            </a>
         </div>
     </section>
 
@@ -394,30 +398,92 @@
     <section class="py-24 px-6 max-w-5xl mx-auto relative z-10" id="timeline">
         <h2 class="font-orbitron text-3xl md:text-4xl mb-16 text-cyan-glow uppercase tracking-widest neon-text-glow text-center">Timeline</h2>
         
-        <div class="flex flex-col md:flex-row justify-between items-center relative gap-8 md:gap-0">
-            
-            <div class="hidden md:block absolute top-[40%] left-0 w-full h-[2px] bg-gradient-to-r from-cyan-glow/10 via-cyan-glow/50 to-cyan-glow/10 -z-10"></div>
-            
-            <div class="flex flex-col items-center">
-                <div class="w-5 h-5 rounded-full bg-cyan-glow shadow-[0_0_15px_#38bdf8] mb-6 border-2 border-deep-navy"></div>
-                <div class="glass p-6 md:p-8 rounded-xl text-center min-w-[280px]">
-                    <h3 class="font-orbitron text-lg text-cyan-glow mb-2">Phase 01</h3>
-                    <h4 class="text-xl font-bold text-white mb-2">PPT Submission</h4>
-                    <p class="text-sm text-gray-400">Deadline: April 1, 2026</p>
+        <div class="relative max-w-5xl mx-auto">
+            <div class="absolute left-[14px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-glow/85 via-cyan-glow/45 to-cyan-glow/10 md:hidden"></div>
+            <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-cyan-glow/85 via-cyan-glow/45 to-cyan-glow/10"></div>
+
+            <div class="space-y-10 md:space-y-14">
+                <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-2 md:gap-12 md:items-start">
+                    <div class="absolute left-[7px] top-8 w-4 h-4 rounded-full bg-cyan-glow shadow-[0_0_15px_#38bdf8] border-2 border-deep-navy md:left-1/2 md:-translate-x-1/2"></div>
+                    <div class="absolute left-[14px] top-10 w-6 h-[2px] bg-cyan-glow/75 md:hidden"></div>
+                    <div class="hidden md:block absolute top-10 left-[calc(50%-3rem)] w-12 h-[2px] bg-cyan-glow/75"></div>
+
+                    <div class="md:col-start-1">
+                        <div class="glass rounded-xl p-6 md:p-7 border border-cyan-glow/35 md:text-right">
+                            <div class="font-orbitron text-sm md:text-base text-cyan-glow uppercase tracking-[0.22em] mb-3">Registration</div>
+                            <h4 class="text-xl font-bold text-white mb-2">Registration Closing Deadline</h4>
+                            <p class="text-sm text-gray-400">Last date to register your team: March 25, 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-2 md:gap-12 md:items-start">
+                    <div class="absolute left-[7px] top-8 w-4 h-4 rounded-full bg-cyan-glow shadow-[0_0_15px_#38bdf8] border-2 border-deep-navy md:left-1/2 md:-translate-x-1/2"></div>
+                    <div class="absolute left-[14px] top-10 w-6 h-[2px] bg-cyan-glow/75 md:hidden"></div>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-12 h-[2px] bg-cyan-glow/75"></div>
+
+                    <div class="md:col-start-2">
+                        <div class="glass rounded-xl p-6 md:p-7 border border-cyan-glow/35">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-cyan-glow/50 bg-deep-navy/60 mb-5">
+                                <span class="w-2 h-2 rounded-full bg-cyan-glow shadow-[0_0_10px_#38bdf8]"></span>
+                                <span class="font-orbitron text-xs md:text-sm text-cyan-glow uppercase tracking-[0.2em]">Phase 01</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="rounded-lg border border-cyan-glow/20 bg-deep-navy/40 p-4">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-cyan-glow/85 mt-2 shrink-0"></div>
+                                        <div>
+                                            <h4 class="text-base font-semibold text-white mb-1">Problem Statement & Domain Release</h4>
+                                            <p class="text-sm text-gray-400">Release date: March 26, 2026</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rounded-lg border border-cyan-glow/20 bg-deep-navy/40 p-4">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-cyan-glow/85 mt-2 shrink-0"></div>
+                                        <div>
+                                            <h4 class="text-base font-semibold text-white mb-1">Last Day for PPT Submission</h4>
+                                            <p class="text-sm text-gray-400">Submission deadline: April 1, 2026</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rounded-lg border border-cyan-glow/20 bg-deep-navy/40 p-4">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-cyan-glow/85 mt-2 shrink-0"></div>
+                                        <div>
+                                            <h4 class="text-base font-semibold text-white mb-1">Phase 01 Evaluation</h4>
+                                            <p class="text-sm text-gray-400">Evaluation window: April 2-3, 2026</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rounded-lg border border-cyan-glow/20 bg-deep-navy/40 p-4">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-cyan-glow/85 mt-2 shrink-0"></div>
+                                        <div>
+                                            <h4 class="text-base font-semibold text-white mb-1">Phase 01 Result</h4>
+                                            <p class="text-sm text-gray-400">Qualified teams announced: April 4, 2026</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-2 md:gap-12 md:items-start">
+                    <div class="absolute left-[7px] top-8 w-4 h-4 rounded-full bg-cyan-glow shadow-[0_0_15px_#38bdf8] border-2 border-deep-navy md:left-1/2 md:-translate-x-1/2"></div>
+                    <div class="absolute left-[14px] top-10 w-6 h-[2px] bg-cyan-glow/75 md:hidden"></div>
+                    <div class="hidden md:block absolute top-10 left-[calc(50%-3rem)] w-12 h-[2px] bg-cyan-glow/75"></div>
+
+                    <div class="md:col-start-1">
+                        <div class="glass rounded-xl p-6 md:p-7 border border-cyan-glow/35 md:text-right">
+                            <div class="font-orbitron text-sm md:text-base text-cyan-glow uppercase tracking-[0.22em] mb-3">Phase 02</div>
+                            <h4 class="text-xl font-bold text-white mb-2">8-Hour Hackathon</h4>
+                            <p class="text-sm text-gray-400">Date: April 6, 2026</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="md:hidden w-[2px] h-16 bg-gradient-to-b from-cyan-glow/50 to-cyan-glow/10 my-2"></div>
-
-            <div class="flex flex-col items-center">
-                <div class="w-5 h-5 rounded-full bg-cyan-glow shadow-[0_0_15px_#38bdf8] mb-6 border-2 border-deep-navy"></div>
-                <div class="glass p-6 md:p-8 rounded-xl text-center min-w-[280px]">
-                    <h3 class="font-orbitron text-lg text-cyan-glow mb-2">Phase 02</h3>
-                    <h4 class="text-xl font-bold text-white mb-2">8-Hour Hackathon</h4>
-                    <p class="text-sm text-gray-400">Date: April 6, 2026</p>
-                </div>
-            </div>
-
         </div>
         
         <div class="text-center mt-20">
@@ -437,20 +503,20 @@
                     <h3 class="font-orbitron text-lg text-cyan-glow uppercase tracking-widest mb-4 text-center md:text-left">Participant Helpline</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                         <a href="tel:+919876543210" class="glass rounded-lg border border-cyan-glow/30 p-4 hover:border-cyan-glow transition-colors text-center md:text-left">
-                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Aarav Sharma</div>
-                            <div class="text-gray-300 mt-1">+91 98765 43210</div>
+                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Sujal</div>
+                            <div class="text-gray-300 mt-1">+91 63639 24898</div>
                         </a>
                         <a href="tel:+919876543211" class="glass rounded-lg border border-cyan-glow/30 p-4 hover:border-cyan-glow transition-colors text-center md:text-left">
-                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Diya Nair</div>
-                            <div class="text-gray-300 mt-1">+91 98765 43211</div>
+                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Tejas</div>
+                            <div class="text-gray-300 mt-1">+91 70192 86337</div>
                         </a>
                         <a href="tel:+919876543212" class="glass rounded-lg border border-cyan-glow/30 p-4 hover:border-cyan-glow transition-colors text-center md:text-left">
-                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Rohan Mehta</div>
-                            <div class="text-gray-300 mt-1">+91 98765 43212</div>
+                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Ramith</div>
+                            <div class="text-gray-300 mt-1">+91 89513 38702</div>
                         </a>
                         <a href="tel:+919876543213" class="glass rounded-lg border border-cyan-glow/30 p-4 hover:border-cyan-glow transition-colors text-center md:text-left">
-                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Isha Verma</div>
-                            <div class="text-gray-300 mt-1">+91 98765 43213</div>
+                            <div class="font-orbitron text-sm text-white uppercase tracking-wider">Prithvi</div>
+                            <div class="text-gray-300 mt-1">+91 95352 10838</div>
                         </a>
                     </div>
                 </div>
