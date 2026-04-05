@@ -10,6 +10,146 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet"/>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .track-domain {
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 0.9rem;
+            overflow: hidden;
+            background: rgba(2, 6, 23, 0.45);
+            box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.08);
+        }
+
+        .track-domain-btn,
+        .track-ps-btn {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            color: #e2e8f0;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .track-domain-btn {
+            padding: 1rem 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.88rem;
+        }
+
+        .track-domain-btn:hover,
+        .track-ps-btn:hover {
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        .track-domain-panel,
+        .track-ps-panel {
+            display: none;
+        }
+
+        .track-domain.open .track-domain-panel,
+        .track-problem.open .track-ps-panel {
+            display: block;
+        }
+
+        .track-domain.open .track-domain-btn,
+        .track-problem.open .track-ps-btn {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .track-chevron {
+            transition: transform 0.2s ease;
+            color: #67e8f9;
+            margin-left: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+
+        .track-domain.open .track-chevron,
+        .track-problem.open .track-chevron {
+            transform: rotate(90deg);
+        }
+
+        .track-problems {
+            padding: 0.35rem 0.7rem 0.8rem;
+        }
+
+        .track-problem {
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            border-radius: 0.7rem;
+            margin: 0.55rem 0;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.45);
+        }
+
+        .track-ps-btn {
+            padding: 0.85rem 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .track-ps-panel {
+            padding: 0.55rem 1rem 1rem;
+        }
+
+        .track-ps-description {
+            padding: 1.1rem 1.1rem;
+            border-radius: 0.65rem;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            background: rgba(2, 6, 23, 0.6);
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .track-code {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.2rem;
+            padding: 0.22rem 0.45rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            background: rgba(56, 189, 248, 0.12);
+            color: #67e8f9;
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+            margin-right: 0.65rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .track-label {
+            display: inline-flex;
+            align-items: center;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .track-sdg-list {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .track-sdg-chip {
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            border-radius: 9999px;
+            padding: 0.22rem 0.6rem;
+            font-size: 0.72rem;
+            color: #67e8f9;
+            background: rgba(56, 189, 248, 0.14);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -396,37 +536,9 @@
     <section class="py-24 px-6 max-w-6xl mx-auto relative z-10" id="tracks">
         <h2 class="font-orbitron text-3xl md:text-4xl mb-16 text-cyan-glow uppercase tracking-widest neon-text-glow text-center">Innovation Tracks</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
-            <div class="glass neon-border rounded-xl p-6">
-                <div class="font-orbitron text-cyan-glow text-sm tracking-[0.2em] uppercase mb-3">01</div>
-                <h3 class="font-orbitron text-xl text-white mb-2">AI in Agriculture</h3>
-                <p class="text-sm text-gray-400">Smarter farming with AI-driven insights, automation, and precision tools.</p>
-            </div>
-            <div class="glass neon-border rounded-xl p-6">
-                <div class="font-orbitron text-cyan-glow text-sm tracking-[0.2em] uppercase mb-3">02</div>
-                <h3 class="font-orbitron text-xl text-white mb-2">AI in Healthcare</h3>
-                <p class="text-sm text-gray-400">Data-powered systems for faster diagnosis and better patient care.</p>
-            </div>
-            <div class="glass neon-border rounded-xl p-6">
-                <div class="font-orbitron text-cyan-glow text-sm tracking-[0.2em] uppercase mb-3">03</div>
-                <h3 class="font-orbitron text-xl text-white mb-2">AI in Cybersecurity</h3>
-                <p class="text-sm text-gray-400">Intelligent threat detection and adaptive defense for secure systems.</p>
-            </div>
-            <div class="glass neon-border rounded-xl p-6">
-                <div class="font-orbitron text-cyan-glow text-sm tracking-[0.2em] uppercase mb-3">04</div>
-                <h3 class="font-orbitron text-xl text-white mb-2">AI in smart City (Sustainability)</h3>
-                <p class="text-sm text-gray-400">AI-powered solutions for efficient, connected, and sustainable cities.</p>
-            </div>
-            <div class="glass neon-border rounded-xl p-6">
-                <div class="font-orbitron text-cyan-glow text-sm tracking-[0.2em] uppercase mb-3">05</div>
-                <h3 class="font-orbitron text-xl text-white mb-2">AI in Environment and Climate</h3>
-                <p class="text-sm text-gray-400">Using AI to track, predict, and tackle environmental challenges.</p>
-            </div>
-            <div class="glass neon-border rounded-xl p-6">
-                <div class="font-orbitron text-cyan-glow text-sm tracking-[0.2em] uppercase mb-3">06</div>
-                <h3 class="font-orbitron text-xl text-white mb-2">AI in legal Systems</h3>
-                <p class="text-sm text-gray-400">AI tools to simplify legal processes and improve access to justice.</p>
-            </div>
+        <div class="max-w-4xl mx-auto">
+            <p class="text-center text-gray-400 mb-8">Click a domain to view problem statements. Click a problem statement to view its description.</p>
+            <div id="tracksAccordion" class="space-y-4"></div>
         </div>
     </section>
 
@@ -609,6 +721,308 @@
 
             updateCountdown();
             setInterval(updateCountdown, 1000);
+        })();
+    </script>
+        <script>
+        (function () {
+            const tracksAccordion = document.getElementById('tracksAccordion');
+
+            if (!tracksAccordion) {
+                return;
+            }
+
+            const tracksData = [
+                {
+                    "domain": "AI in Healthcare",
+                    "problems": [
+                    {
+                        "code": "H001",
+                        "title": "Context-Aware Hypoglycaemia Risk Intelligence System",
+                        "description": "An AI system for diabetics that goes beyond glucose readings — factoring in medication schedules, daily lifestyle patterns, and time-of-day trends to predict when a hypoglycaemic episode is likely and alert users before it happens.",
+                        "sdgs": ["SDG-3"]
+                    },
+                    {
+                        "code": "H002",
+                        "title": "Context-Aware Daily Health Decision Assistant",
+                        "description": "An AI-driven system that analyzes a user's daily habits like meal timings, sleep patterns, and routines to provide personalized, context-aware health suggestions — helping people make better everyday health decisions without replacing medical advice.",
+                        "sdgs": ["SDG-3"]
+                    },
+                    {
+                        "code": "H003",
+                        "title": "AI-Native Clinical Trial Data Management System",
+                        "description": "An AI platform that reads clinical trial protocols, automatically structures raw data from documents like scans and reports, eliminates manual entry, detects inconsistencies in real time, and stays compliant with GCP and 21 CFR Part 11 standards.",
+                        "sdgs": ["SDG-3"]
+                    },
+                    {
+                        "code": "H004",
+                        "title": "Personal Health Data Visualizer & Insight Generator",
+                        "description": "A system that takes raw health data collected by users and transforms it into clear visual insights — highlighting patterns, trends, and anomalies to help users actually understand and act on their own health information.",
+                        "sdgs": ["SDG-3"]
+                    }
+                    ]
+                },
+                {
+                    "domain": "AI in Agriculture",
+                    "problems": [
+                    {
+                        "code": "A001",
+                        "title": "Gamified Platform to Promote Sustainable Farming Practices",
+                        "description": "A platform that makes sustainable farming engaging for farmers by turning good practices like composting, reduced pesticide use, and crop rotation into challenges with rewards, badges, and progress tracking to drive behavioral change.",
+                        "sdgs": ["SDG-2", "SDG-12", "SDG-13"]
+                    },
+                    {
+                        "code": "A002",
+                        "title": "AI-Based Monitoring of Crop Health, Soil Condition, and Pest Risks using Sensor Data",
+                        "description": "Integrates sensor or simulated data to continuously monitor crop health, soil conditions, and potential pest risks — providing farmers with real-time insights and predictive alerts to enable faster, data-driven field decisions.",
+                        "sdgs": ["SDG-2", "SDG-13", "SDG-1"]
+                    },
+                    {
+                        "code": "A003",
+                        "title": "AI-Powered Precision Weeding System",
+                        "description": "A prototype system that uses computer vision to identify weeds among crops and suggests or simulates targeted removal — reducing the need for blanket herbicide spraying and cutting down manual weeding labor.",
+                        "sdgs": ["SDG-2", "SDG-13"]
+                    },
+                    {
+                        "code": "A004",
+                        "title": "AI-Powered Real-Time Crop Price Optimization & Smart Trading Platform",
+                        "description": "An AI platform that gives farmers live crop price tracking across markets, demand-supply insights, and intelligent sell/trade recommendations — connecting them directly with brokers and buyers to cut out intermediaries and maximize profitability.",
+                        "sdgs": ["SDG-2"]
+                    }
+                    ]
+                },
+                {
+                    "domain": "AI in Legal Systems",
+                    "problems": [
+                    {
+                        "code": "L001",
+                        "title": "Gamified Children's Rights Platform",
+                        "description": "An interactive platform that uses quizzes, rewards, and challenges to educate children about their legal rights and responsibilities — making legal literacy engaging, age-appropriate, and easy to understand.",
+                        "sdgs": ["SDG-4"]
+                    },
+                    {
+                        "code": "L002",
+                        "title": "Blockchain-Based eVault for Legal Records",
+                        "description": "A tamper-proof digital vault using blockchain to store and manage legal records like court orders, property documents, and affidavits — ensuring data integrity, preventing forgery, and enabling quick verification by authorized parties.",
+                        "sdgs": ["SDG-16"]
+                    },
+                    {
+                        "code": "L003",
+                        "title": "Digital Beneficiary Identification for GIA",
+                        "description": "A digital solution that accurately identifies and verifies eligible beneficiaries for government grant schemes using data analysis and validation — reducing fraud, eliminating duplication, and ensuring aid reaches those who truly need it.",
+                        "sdgs": ["SDG-1"]
+                    },
+                    {
+                        "code": "L004",
+                        "title": "Inter-Ministry Data Integration Platform",
+                        "description": "A system that pulls together and analyzes data from multiple government departments in one place — enabling better cross-ministry coordination, smarter resource allocation, and improved production efficiency.",
+                        "sdgs": ["SDG-17"]
+                    }
+                    ]
+                },
+                {
+                    "domain": "AI in Cybersecurity",
+                    "problems": [
+                    {
+                        "code": "C001",
+                        "title": "Cybersecurity Awareness & Attack Simulation Platform",
+                        "description": "An educational platform that teaches users about cyber threats like phishing and social engineering through simulated attacks — then measures how well users respond and tracks awareness improvement over time.",
+                        "sdgs": ["SDG-4"]
+                    },
+                    {
+                        "code": "C002",
+                        "title": "Adversarially Robust AI Systems Resilient to Evasion and Poisoning Attacks",
+                        "description": "Engineer ML models used in cybersecurity that can withstand deliberate attempts by attackers to confuse or corrupt them through evasion or data poisoning — ensuring the model's defensive integrity remains intact under adversarial conditions.",
+                        "sdgs": ["SDG-9"]
+                    },
+                    {
+                        "code": "C003",
+                        "title": "Decentralized Carbon Credit Marketplace",
+                        "description": "A blockchain-based platform where individuals and organizations can record sustainability activities like tree planting or renewable energy usage, convert them into verifiable carbon credits, and trade them transparently in a decentralized marketplace.",
+                        "sdgs": ["SDG-13"]
+                    },
+                    {
+                        "code": "C004",
+                        "title": "Blockchain-Based Agricultural Supply Chain Transparency Platform",
+                        "description": "A blockchain-enabled system that tracks agricultural produce from farm to consumer, ensuring full transparency in product movement, pricing, and stakeholder transactions across every step of the supply chain.",
+                        "sdgs": ["SDG-2", "SDG-9"]
+                    }
+                    ]
+                },
+                {
+                    "domain": "AI in Climate and Environment",
+                    "problems": [
+                    {
+                        "code": "E001",
+                        "title": "AI-Based Glacier Retreat and Freshwater Scarcity Risk Awareness System",
+                        "description": "An AI system that uses glacier and river basin data to show how retreating glaciers affect local freshwater sources, estimates future water scarcity risk, and presents insights through simple visualizations that connect glacier health to everyday water security.",
+                        "sdgs": ["SDG-13", "SDG-6", "SDG-15"]
+                    },
+                    {
+                        "code": "E002",
+                        "title": "AI-Based Real-Time Global Carbon Flow Tracking System",
+                        "description": "An AI system that models and predicts real-time carbon movement across ecosystems — atmosphere, oceans, and land — identifying major emission sources, carbon sinks, and transitions, with dynamic visualizations to support climate action and policy decisions.",
+                        "sdgs": ["SDG-13", "SDG-15"]
+                    },
+                    {
+                        "code": "E003",
+                        "title": "AI-Based Food Supply Chain Climate Risk Predictor",
+                        "description": "Connects climate data like droughts, floods, and temperature shifts with crop patterns and supply routes to predict where food shortages or delivery disruptions are likely — helping retailers, governments, and NGOs act before a crisis hits.",
+                        "sdgs": ["SDG-2", "SDG-13", "SDG-12"]
+                    },
+                    {
+                        "code": "E004",
+                        "title": "AI-Based Sustainable Consumption Decision Assistant",
+                        "description": "An AI-powered web app that evaluates the environmental impact of everyday products and recommends more sustainable alternatives — helping users make eco-friendly purchasing and consumption choices in their daily lives.",
+                        "sdgs": ["SDG-12"]
+                    }
+                    ]
+                },
+                {
+                    "domain": "AI in Smart Cities",
+                    "problems": [
+                    {
+                        "code": "S001",
+                        "title": "AI-Based Smart Ambulance Dispatch and Route Recommendation Web Application",
+                        "description": "A web app that uses AI to suggest the fastest ambulance route and nearest available hospital based on real-time or simulated data — reducing emergency response time in urban areas and improving survival outcomes.",
+                        "sdgs": ["SDG-9", "SDG-11", "SDG-13"]
+                    },
+                    {
+                        "code": "S002",
+                        "title": "Industrial Waste Exchange Platform",
+                        "description": "A web platform where industries can list their waste materials like metal scraps, chemicals, or by-products and other industries can browse and request them for reuse — turning industrial waste into valuable resources and reducing environmental harm.",
+                        "sdgs": ["SDG-9", "SDG-12", "SDG-13"]
+                    },
+                    {
+                        "code": "S003",
+                        "title": "Smart Citizen Services Platform for Environmental Awareness & Reporting",
+                        "description": "A gamified web/mobile platform that educates citizens about environmental sustainability through challenges and rewards, while also allowing them to report community issues like water leakages or pollution so authorities can take timely action.",
+                        "sdgs": ["SDG-11", "SDG-6", "SDG-13"]
+                    },
+                    {
+                        "code": "S004",
+                        "title": "Smart Resource Allocation — Volunteer Coordination",
+                        "description": "A system that aggregates scattered community needs data from NGOs and field surveys, visualizes the most urgent unmet needs, and intelligently matches available volunteers to tasks by skill, location, and availability — with a real-time coordination interface for coordinators.",
+                        "sdgs": ["SDG-13", "SDG-12"]
+                    }
+                    ]
+                }
+                ];
+
+            tracksAccordion.innerHTML = tracksData.map((domainItem, domainIndex) => {
+                const domainCode = domainIndex + 1;
+                const problemsMarkup = domainItem.problems.map((problem, problemIndex) => {
+                    const psCode = `${domainCode}.${problemIndex + 1}`;
+                    const displayCode = problem.code || psCode;
+                    const sdgMarkup = (problem.sdgs || []).map((sdg) => `<span class="track-sdg-chip">${sdg}</span>`).join('');
+                    return `
+                        <article class="track-problem" data-ps-index="${problemIndex}">
+                            <button type="button" class="track-ps-btn" aria-expanded="false">
+                                <span class="track-label"><span class="track-code">${displayCode}</span>${problem.title}</span>
+                                <span class="track-chevron">&#9654;</span>
+                            </button>
+                            <div class="track-ps-panel" hidden>
+                                <div class="track-ps-description">
+                                    <p>${problem.description}</p>
+                                    <div class="track-sdg-list">${sdgMarkup}</div>
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                return `
+                    <article class="track-domain" data-domain-index="${domainIndex}">
+                        <button type="button" class="track-domain-btn" aria-expanded="false">
+                            <span class="track-label"><span class="track-code">${domainCode}</span>${domainItem.domain}</span>
+                            <span class="track-chevron">&#9654;</span>
+                        </button>
+                        <div class="track-domain-panel" hidden>
+                            <div class="track-problems">${problemsMarkup}</div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            const domainButtons = tracksAccordion.querySelectorAll('.track-domain-btn');
+
+            function closeProblemBlocks(domainCard) {
+                const problemButtons = domainCard.querySelectorAll('.track-ps-btn');
+                const problemCards = domainCard.querySelectorAll('.track-problem');
+                const problemPanels = domainCard.querySelectorAll('.track-ps-panel');
+
+                problemButtons.forEach((problemButton) => {
+                    problemButton.setAttribute('aria-expanded', 'false');
+                });
+
+                problemCards.forEach((problemCard) => {
+                    problemCard.classList.remove('open');
+                });
+
+                problemPanels.forEach((problemPanel) => {
+                    problemPanel.hidden = true;
+                });
+            }
+
+            function closeDomain(domainCard) {
+                const domainButton = domainCard.querySelector('.track-domain-btn');
+                const domainPanel = domainCard.querySelector('.track-domain-panel');
+
+                if (!domainButton || !domainPanel) {
+                    return;
+                }
+
+                domainButton.setAttribute('aria-expanded', 'false');
+                domainPanel.hidden = true;
+                domainCard.classList.remove('open');
+                closeProblemBlocks(domainCard);
+            }
+
+            domainButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const domainCard = button.closest('.track-domain');
+                    const panel = domainCard ? domainCard.querySelector('.track-domain-panel') : null;
+
+                    if (!domainCard || !panel) {
+                        return;
+                    }
+
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+
+                    if (expanded) {
+                        closeDomain(domainCard);
+                        return;
+                    }
+
+                    const allDomains = tracksAccordion.querySelectorAll('.track-domain');
+                    allDomains.forEach((card) => {
+                        if (card !== domainCard) {
+                            closeDomain(card);
+                        }
+                    });
+
+                    button.setAttribute('aria-expanded', 'true');
+                    panel.hidden = false;
+                    domainCard.classList.add('open');
+                });
+            });
+
+            const problemButtons = tracksAccordion.querySelectorAll('.track-ps-btn');
+
+            problemButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const problemCard = button.closest('.track-problem');
+                    const panel = problemCard ? problemCard.querySelector('.track-ps-panel') : null;
+
+                    if (!problemCard || !panel) {
+                        return;
+                    }
+
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    panel.hidden = expanded;
+                    problemCard.classList.toggle('open', !expanded);
+                });
+            });
         })();
     </script>
 
